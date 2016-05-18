@@ -1,0 +1,23 @@
+{
+  "name": "elm-guide",
+  "version": "1.0.0",
+  "description": "My workings from the [Elm guide][]. Nothing special, just something I'm reading through over lunch / free time recently.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "elm": "^0.17.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olical/elm-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Olical/elm-guide/issues"
+  },
+  "homepage": "https://github.com/Olical/elm-guide#readme"
+}

@@ -1,4 +1,4 @@
-.PHONY: default bootstrap build
+.PHONY: default bootstrap start build
 
 BIN = ./node_modules/.bin
 
@@ -8,5 +8,8 @@ bootstrap:
 	npm install
 	$(BIN)/elm package install
 
+start:
+	npm start
+
 build:
-	$(BIN)/webpack
+	npm run build

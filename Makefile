@@ -1,15 +1,13 @@
-.PHONY: default bootstrap start build
+.PHONY: install reactor repl
 
-BIN = ./node_modules/.bin
+elm = ./node_modules/.bin/elm
 
-default: bootstrap build
-
-bootstrap:
+install:
 	npm install
-	$(BIN)/elm package install
+	$(elm) package install
 
-start:
-	npm start
+reactor:
+	$(elm) reactor
 
-build:
-	npm run build
+repl:
+	$(elm) repl

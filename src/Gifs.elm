@@ -1,4 +1,4 @@
-import Html.App as Html
+import Html.App as App
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (src)
@@ -7,7 +7,7 @@ import Http
 import Json.Decode as Json
 
 main =
-  Html.program
+  App.program
   { init = init
   , update = update
   , view = view

@@ -11,17 +11,17 @@ type alias Model =
 
 main =
   App.program
-    { init = init
+    { init = init 0 0
     , view = view
     , update = update
-    , subscriptions = subscriptions
+    , subscriptions = \_ -> Sub.none
     }
 
-init : (Model, Cmd Msg)
-init =
+init : Int -> Int -> (Model, Cmd Msg)
+init top bottom =
   (
-    { topCounter = Counter.init 0
-    , bottomCounter = Counter.init 0
+    { topCounter = Counter.init top
+    , bottomCounter = Counter.init bottom
     }
   , Cmd.none)
 
@@ -34,17 +34,13 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     Reset ->
-      init
+      init 0 0
 
     Top msg ->
       ({ model | topCounter = Counter.update msg model.topCounter }, Cmd.none)
 
     Bottom msg ->
       ({ model | bottomCounter = Counter.update msg model.bottomCounter }, Cmd.none)
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
 
 view : Model -> Html Msg
 view model =

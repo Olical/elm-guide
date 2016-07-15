@@ -20,8 +20,8 @@ main =
 init : (Model, Cmd Msg)
 init =
   (
-    { topCounter = fst (Counter.init)
-    , bottomCounter = fst (Counter.init)
+    { topCounter = Counter.init 0
+    , bottomCounter = Counter.init 0
     }
   , Cmd.none)
 
@@ -37,10 +37,10 @@ update msg model =
       init
 
     Top msg ->
-      ({ model | topCounter = fst (Counter.update msg model.topCounter) }, Cmd.none)
+      ({ model | topCounter = Counter.update msg model.topCounter }, Cmd.none)
 
     Bottom msg ->
-      ({ model | bottomCounter = fst (Counter.update msg model.bottomCounter) }, Cmd.none)
+      ({ model | bottomCounter = Counter.update msg model.bottomCounter }, Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions model =

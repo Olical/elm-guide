@@ -10,37 +10,34 @@ type alias Model =
   }
 
 main =
-  App.program
-    { init = init 0 0
+  App.beginnerProgram
+    { model = init 0 0
     , view = view
     , update = update
-    , subscriptions = \_ -> Sub.none
     }
 
-init : Int -> Int -> (Model, Cmd Msg)
+init : Int -> Int -> Model
 init top bottom =
-  (
-    { topCounter = Counter.init top
-    , bottomCounter = Counter.init bottom
-    }
-  , Cmd.none)
+  { topCounter = Counter.init top
+  , bottomCounter = Counter.init bottom
+  }
 
 type Msg
   = Reset
   | Top Counter.Msg
   | Bottom Counter.Msg
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> Model
 update msg model =
   case msg of
     Reset ->
       init 0 0
 
     Top msg ->
-      ({ model | topCounter = Counter.update msg model.topCounter }, Cmd.none)
+      { model | topCounter = Counter.update msg model.topCounter }
 
     Bottom msg ->
-      ({ model | bottomCounter = Counter.update msg model.bottomCounter }, Cmd.none)
+      { model | bottomCounter = Counter.update msg model.bottomCounter }
 
 view : Model -> Html Msg
 view model =

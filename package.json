@@ -6,7 +6,9 @@
   "dependencies": {
     "elm": "^0.17.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "elm": "^0.17.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,6 +3,13 @@ module Counter exposing (Model, Msg, init, update, view)
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
+main =
+  Html.beginnerProgram { model = model, view = view, update = update }
+
+model : Model
+model =
+  0
+
 type alias Model = Int
 
 type Msg = Increment | Decrement | Reset

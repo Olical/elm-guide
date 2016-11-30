@@ -2,7 +2,6 @@ import Counter
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Html.App as App
 
 type alias Model =
   { topCounter : Counter.Model
@@ -10,7 +9,7 @@ type alias Model =
   }
 
 main =
-  App.beginnerProgram
+  Html.beginnerProgram
     { model = init 0 0
     , view = view
     , update = update
@@ -42,7 +41,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div []
-    [ App.map Top (Counter.view model.topCounter)
-    , App.map Bottom (Counter.view model.bottomCounter)
+    [ Html.map Top (Counter.view model.topCounter)
+    , Html.map Bottom (Counter.view model.bottomCounter)
     , button [ onClick Reset ] [ text "RESET" ]
     ]

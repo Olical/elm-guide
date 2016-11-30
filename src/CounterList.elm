@@ -2,7 +2,6 @@ import Counter
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Html.App as App
 
 type alias IndexedCounter =
   { id : Int
@@ -15,7 +14,7 @@ type alias Model =
   }
 
 main =
-  App.beginnerProgram
+  Html.beginnerProgram
     { model = init
     , view = view
     , update = update
@@ -67,4 +66,4 @@ view model =
 
 viewIndexedCounter : IndexedCounter -> Html Msg
 viewIndexedCounter {id, model} =
-  App.map (Modify id) (Counter.view model)
+  Html.map (Modify id) (Counter.view model)

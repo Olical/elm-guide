@@ -1,5 +1,4 @@
 import Html exposing (..)
-import Html.App as App
 import Html.Events exposing (..)
 import Random
 
@@ -36,7 +35,7 @@ subscriptions model =
   Sub.none
 
 main =
-  App.program
+  Html.program
   { init = init
   , view = view
   , update = update

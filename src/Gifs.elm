@@ -1,4 +1,3 @@
-import Html.App as App
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (src)
@@ -7,7 +6,7 @@ import Http
 import Json.Decode as Json
 
 main =
-  App.program
+  Html.program
   { init = init
   , update = update
   , view = view
@@ -20,7 +19,7 @@ getRandomGif topic =
     url =
       "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" ++ topic
   in
-     Task.perform FetchFail FetchSucceed (Http.get decodeGifUrl url)
+     Http.send NewGif (Http.get url decodeGifUrl)
 
 decodeGifUrl : Json.Decoder String
 decodeGifUrl =
@@ -43,8 +42,7 @@ init =
 
 type Msg
   = MorePlease
-  | FetchSucceed String
-  | FetchFail Http.Error
+  | NewGif (Result Http.Error String)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -52,10 +50,10 @@ update msg model =
     MorePlease ->
       ({ model | gifUrl = loading }, getRandomGif model.topic)
 
-    FetchSucceed newUrl ->
+    NewGif (Ok newUrl) ->
       ({ model | gifUrl = newUrl }, Cmd.none)
 
-    FetchFail _ ->
+    NewGif (Err _) ->
       (model, Cmd.none)
 
 -- VIEW

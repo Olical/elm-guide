@@ -1,7 +1,6 @@
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (src)
-import Task
 import Http
 import Json.Decode as Json
 
